@@ -34,5 +34,8 @@ This project demonstrates a complete Kafka pipeline including:
 
 ### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/DhananjiMadhushika/Kafka-based-system-Big-Data-Assignment-.git
 cd Kafka-based-system-Big-Data-Assignment
+
+# Start Kafka, producer, and consumer
+docker-compose up -d
