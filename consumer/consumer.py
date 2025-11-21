@@ -2,7 +2,6 @@ from confluent_kafka import Consumer, Producer
 from fastavro import reader
 import io, time, logging
 
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -17,7 +16,6 @@ def get_kafka_consumer(max_retries=10, retry_delay=5):
                 "socket.timeout.ms": 10000
             })
             
-            # Test connection by listing topics
             consumer.list_topics(timeout=10)
             logger.info("Successfully connected to Kafka")
             return consumer

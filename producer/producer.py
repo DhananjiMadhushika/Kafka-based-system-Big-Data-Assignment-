@@ -2,7 +2,6 @@ from confluent_kafka import Producer
 from fastavro import parse_schema, writer
 import io, json, random, time, logging
 
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -18,7 +17,6 @@ def get_kafka_producer(max_retries=10, retry_delay=5):
                 "message.timeout.ms": 5000
             })
             
-            # Test connection
             p.list_topics(timeout=10)
             logger.info("Successfully connected to Kafka")
             return p
@@ -52,7 +50,7 @@ while True:
 
     try:
         p.produce("orders", serialize_avro(order), callback=delivery_report)
-        p.poll(0)  # Serve delivery callbacks
+        p.poll(0)
         logger.info(f"Produced: {order}")
     except Exception as e:
         logger.error(f"Failed to produce message: {e}")
